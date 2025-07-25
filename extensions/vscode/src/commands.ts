@@ -757,42 +757,6 @@ const getCommandsMap: (
           }
         });
     },
-    "continue.enterEnterpriseLicenseKey": async () => {
-      captureCommandTelemetry("enterEnterpriseLicenseKey");
-
-      const licenseKey = await vscode.window.showInputBox({
-        prompt: "Enter your enterprise license key",
-        password: true,
-        ignoreFocusOut: true,
-        placeHolder: "License key",
-      });
-
-      if (!licenseKey) {
-        return;
-      }
-
-      try {
-        const isValid = core.invoke("mdm/setLicenseKey", {
-          licenseKey,
-        });
-
-        if (isValid) {
-          void vscode.window.showInformationMessage(
-            "Enterprise license key successfully validated and saved. Reloading window.",
-          );
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          await vscode.commands.executeCommand("workbench.action.reloadWindow");
-        } else {
-          void vscode.window.showErrorMessage(
-            "Invalid license key. Please check your license key and try again.",
-          );
-        }
-      } catch (error) {
-        void vscode.window.showErrorMessage(
-          `Failed to set enterprise license key: ${error instanceof Error ? error.message : String(error)}`,
-        );
-      }
-    },
     "continue.forceNextEdit": async () => {
       captureCommandTelemetry("forceNextEdit");
 

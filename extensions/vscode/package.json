@@ -330,12 +330,6 @@
         "group": "Continue"
       },
       {
-        "command": "continue.enterEnterpriseLicenseKey",
-        "category": "Continue",
-        "title": "Enter Enterprise License Key",
-        "group": "Continue"
-      },
-      {
         "command": "continue.nextEditWindow.hideNextEditSuggestion",
         "category": "Continue",
         "title": "Hide Next Edit Suggestion"
@@ -481,9 +475,6 @@
         },
         {
           "command": "continue.newSession"
-        },
-        {
-          "command": "continue.enterEnterpriseLicenseKey"
         },
         {
           "command": "continue.generateRule"
