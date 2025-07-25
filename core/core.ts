@@ -61,7 +61,6 @@ import {
 } from "./config/onboarding";
 import { createNewWorkspaceBlockFile } from "./config/workspace/workspaceBlocks";
 import { MCPManagerSingleton } from "./context/mcp/MCPManagerSingleton";
-import { setMdmLicenseKey } from "./control-plane/mdm/mdm";
 import { ApplyAbortManager } from "./edit/applyAbortManager";
 import { streamDiffLines } from "./edit/streamDiffLines";
 import { shouldIgnore } from "./indexing/shouldIgnore";
@@ -928,10 +927,6 @@ export class Core {
       },
     );
 
-    on("mdm/setLicenseKey", ({ data: { licenseKey } }) => {
-      const isValid = setMdmLicenseKey(licenseKey);
-      return isValid;
-    });
   }
 
   private async handleToolCall(toolCall: ToolCall) {
